@@ -1,0 +1,73 @@
+<html>
+<head>
+    <title>My First Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 30px;
+            margin: 0;
+            background: linear-gradient(to right, #ffe5e5, #ffcccc); 
+            color: #3b0a0a; 
+        }
+        h1 {
+            color: #b71c1c; 
+        }
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        img {
+            margin: 20px 10px;
+            width: 300px;
+            height: 180px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        a {
+            color: #d32f2f; 
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: linear-gradient(to right, #f44336, #e57373); 
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: linear-gradient(to right, #c62828, #ef5350); 
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to My First Website!</h1>
+    <p>This is a simple webpage made for beginners.</p>
+    <img src="C:\Users\sania\OneDrive\Desktop\webdev.jpg" alt="Web Dev">
+    <img src="C:\Users\sania\OneDrive\Desktop\webdev2.jpg" alt="Web Dev">
+    <img src="C:\Users\sania\OneDrive\Desktop\webdev3.webp" alt="Web Dev">
+    <p>Helpful sites for learning web development:</p>
+    <p>
+         <a href="https://developer.mozilla.org/" target="_blank">MDN Web Docs</a><br>
+         <a href="https://www.w3schools.com/" target="_blank">W3Schools</a><br>
+         <a href="https://www.freecodecamp.org/" target="_blank">freeCodeCamp</a>
+    </p>
+    <p>Click below to interact!</p>
+    <button onclick="showMessage()">Click Me!</button>
+    <script>
+       function showMessage() {
+            alert("Thanks for clicking!");
+        }
+    </script>
+</body>
+</html>
