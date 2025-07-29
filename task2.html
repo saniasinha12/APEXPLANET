@@ -1,0 +1,219 @@
+<html>
+<head>
+  <title>My Website</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f3f4f6, #e0f7fa);
+      color: #2c3e50;
+    }
+    nav {
+      background: linear-gradient(to right, #283593, #00acc1);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: black;
+    }
+    nav h1 {
+      font-size: 26px;
+      letter-spacing: 1px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav ul li {
+      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+    }
+    nav ul li:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #ffd600;
+    }
+    .container {
+      max-width: 720px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .box {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 40px;
+    }
+    .box h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: black;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    textarea {
+      resize: vertical;
+      height: 100px;
+    }
+    .btn {
+      background: linear-gradient(to right, #7e57c2, #5c6bc0);
+      color: black;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background: linear-gradient(to right, #512da8, #3949ab);
+    }
+    #todo-input {
+      width: 72%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    #add-btn {
+      padding: 12px 18px;
+      margin-left: 10px;
+      background: linear-gradient(to right, #42a5f5, #26c6da);
+      color: black;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    #add-btn:hover {
+      background: linear-gradient(to right, #1e88e5, #00acc1);
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+    li {
+      background: #fafafa;
+      border: 1px solid #ddd;
+      padding: 12px 16px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    }
+    li button {
+      background: linear-gradient(to right, #ef5350, #e53935);
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    li button:hover {
+      background: linear-gradient(to right, #c62828, #b71c1c);
+    }
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+      #todo-input {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      #add-btn {
+        width: 100%;
+        margin-left: 0;
+      }
+      li {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      li button {
+        margin-top: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <h1>My Website</h1>
+    <ul>
+      <li>Home</li>
+      <li>Contact</li>
+      <li>To Do</li>
+    </ul>
+  </nav>
+  <div class="container">
+    <div class="box">
+      <h2>Contact Form</h2>
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email" required />
+        <textarea id="message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Submit</button>
+      </form>
+    </div>
+    <div class="box">
+      <h2>To-Do List</h2>
+      <input type="text" id="todo-input" placeholder="Enter a new task" />
+      <button id="add-btn">Add</button>
+      <ul id="todo-list"></ul>
+    </div>
+  </div>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!name || !email || !message) {
+        alert("Please fill in all fields.");
+        return;
+      }
+      if (!emailRegex.test(email)) {
+        alert("Please enter a valid email.");
+        return;
+      }
+      alert("Form submitted successfully!");
+      this.reset();
+    });
+    document.getElementById('add-btn').addEventListener('click', function() {
+      const taskInput = document.getElementById('todo-input');
+      const taskText = taskInput.value.trim();
+      if (taskText === '') return;
+      const li = document.createElement('li');
+      li.textContent = taskText;
+      const delBtn = document.createElement('button');
+      delBtn.textContent = 'Delete';
+      delBtn.onclick = () => li.remove();
+      li.appendChild(delBtn);
+      document.getElementById('todo-list').appendChild(li);
+      taskInput.value = '';
+    });
+  </script>
+</body>
+</html>
